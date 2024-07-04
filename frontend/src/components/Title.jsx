@@ -1,5 +1,11 @@
+import { Typography } from "@mui/material";
+
 const Title = () => {
-	return <div>Phonebook</div>;
+	return (
+		<Typography my={2} textAlign="center" variant="h1">
+			Phone Book
+		</Typography>
+	);
 };
 
 export default Title;
