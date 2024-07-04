@@ -8,7 +8,7 @@ const ContactCard = ({ icon, name, phone }) => {
 					<Grid item>
 						<Avatar>{icon}</Avatar>{" "}
 					</Grid>
-					<Grid item>
+					<Grid item xs>
 						<Typography variant="h6">{name}</Typography>
 						<Typography color="textSecondary">{phone}</Typography>
 					</Grid>
