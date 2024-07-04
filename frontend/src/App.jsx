@@ -8,7 +8,7 @@ import { Person } from "@mui/icons-material";
 
 function App() {
 	const [search, setSearch] = useState("");
-	const contacts = [
+	const [contacts] = useState([
 		{ icon: <Person />, name: "John Doe", phone: "123-456-7890" },
 		{ icon: <Person />, name: "Jane Smith", phone: "098-765-4321" },
 		{ icon: <Person />, name: "Alice Johnson", phone: "234-567-8901" },
@@ -48,7 +48,12 @@ function App() {
 		{ icon: <Person />, name: "Irene Radium", phone: "678-901-2345" },
 		{ icon: <Person />, name: "Jake Actinium", phone: "789-012-3456" },
 		{ icon: <Person />, name: "Lily Thorium", phone: "890-123-4567" },
-	];
+	]);
+
+	// Search Functionality Logic
+	const filteredContacts = contacts.filter((contact) =>
+		contact.name.toLowerCase().includes(search.toLowerCase())
+	);
 
 	return (
 		<Container>
@@ -63,7 +68,7 @@ function App() {
 					/>
 				</Box>
 
-				<ContactsGrid contacts={contacts} />
+				<ContactsGrid contacts={filteredContacts} />
 			</Box>
 		</Container>
 	);

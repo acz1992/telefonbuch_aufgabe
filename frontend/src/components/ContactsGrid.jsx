@@ -10,7 +10,7 @@ const ContactsGrid = ({ contacts }) => {
 
 			<Grid container spacing={2}>
 				{contacts.map((contact, index) => (
-					<Grid itemitem xs={12} sm={6} md={4} key={index}>
+					<Grid item xs={12} sm={6} md={4} key={index}>
 						<ContactCard {...contact} />
 					</Grid>
 				))}
