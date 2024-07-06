@@ -59,7 +59,7 @@ function App() {
 		<Container>
 			<Box>
 				<Title />
-				<Box>
+				<Box display="flex" justifyContent="center">
 					<SearchBar
 						value={search}
 						onChange={(e) => {
