@@ -1,15 +1,11 @@
-import {
-	ApolloClient,
-	InMemoryCache,
-	ApolloProvider,
-	gql,
-} from "@apollo/client";
+import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 
 const client = new ApolloClient({
 	uri: "http://localhost:4000/graphql",
 	cache: new InMemoryCache(),
 });
 
+// Test whether Client succesfully initialized
 client
 	.query({
 		query: gql`
@@ -20,6 +16,7 @@ client
 				}
 			}
 		`,
+		variables: { name: "aminah" },
 	})
 	.then((result) => console.log(result));
 
