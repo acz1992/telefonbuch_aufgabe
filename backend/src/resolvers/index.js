@@ -2,7 +2,7 @@ const phoneData = require("../../data/telefonbuch.json");
 
 const resolvers = {
 	Query: {
-		searchPhonebook: ({ name }) => {
+		searchPhonebook: (_, { name }) => {
 			return phoneData.filter((entry) => entry.name.includes(name));
 		},
 	},
