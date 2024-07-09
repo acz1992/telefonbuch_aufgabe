@@ -4,15 +4,19 @@ const { ApolloServer } = require("apollo-server");
 const typeDefs = require("./schema");
 const resolvers = require("./resolvers");
 
-const app = express();
-// Pass imported schema to new ApolloServer instance
-const server = new ApolloServer({ typeDefs, resolvers });
-server.start();
-server.applyMiddleware({ app });
+async function startServer() {
+	const app = express();
+	// Pass imported schema & resolvers to new ApolloServer instance
+	const server = new ApolloServer({ typeDefs, resolvers });
+	server.start();
+	server.applyMiddleware({ app });
 
-const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => {
-	console.log(
-		`Server ready at http://localhost:${PORT}${server.graphqlPath}`
-	);
-});
+	const PORT = process.env.PORT || 4000;
+	app.listen(PORT, () => {
+		console.log(
+			`Server ready at http://localhost:${PORT}${server.graphqlPath}`
+		);
+	});
+}
+
+startServer();
