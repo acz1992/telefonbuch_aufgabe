@@ -6,6 +6,9 @@ import ContactsGrid from "./components/ContactsGrid";
 import { useState } from "react";
 import { Person } from "@mui/icons-material";
 
+import { useQuery } from "@apollo/client";
+import { SEARCH_PHONEBOOK } from "./graphql/queries";
+
 function App() {
 	const [search, setSearch] = useState("");
 	const [contacts] = useState([
@@ -49,6 +52,10 @@ function App() {
 		{ icon: <Person />, name: "Jake Actinium", phone: "789-012-3456" },
 		{ icon: <Person />, name: "Lily Thorium", phone: "890-123-4567" },
 	]);
+
+	const { loading, error, data } = useQuery(SEARCH_PHONEBOOK, {
+		variables: { name: search },
+	});
 
 	// Search Functionality Logic
 	const filteredContacts = contacts.filter((contact) =>
