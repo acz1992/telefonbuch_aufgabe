@@ -1,4 +1,4 @@
-import { Grid, Typography, Box } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import ContactCard from "./ContactCard";
 
 const ContactsGrid = ({ contacts }) => {

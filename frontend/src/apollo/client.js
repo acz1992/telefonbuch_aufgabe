@@ -5,19 +5,4 @@ const client = new ApolloClient({
 	cache: new InMemoryCache(),
 });
 
-// Test whether Client succesfully initialized
-client
-	.query({
-		query: gql`
-			query SearchPhonebook($name: String!) {
-				searchPhonebook(name: $name) {
-					name
-					phone
-				}
-			}
-		`,
-		variables: { name: "aminah" },
-	})
-	.then((result) => console.log(result));
-
 export default client;

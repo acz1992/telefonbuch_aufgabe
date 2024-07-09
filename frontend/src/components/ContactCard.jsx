@@ -6,7 +6,7 @@ const ContactCard = ({ icon, name, phone }) => {
 			<CardContent>
 				<Grid container alignItems="center" spacing={2}>
 					<Grid item>
-						<Avatar>{icon}</Avatar>{" "}
+						<Avatar>{icon}</Avatar>
 					</Grid>
 					<Grid item xs>
 						<Typography variant="h6">{name}</Typography>

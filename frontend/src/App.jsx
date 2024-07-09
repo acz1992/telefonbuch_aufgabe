@@ -1,4 +1,3 @@
-import "./styles/App.css";
 import { Container, Box } from "@mui/material";
 import Title from "./components/Title";
 import SearchBar from "./components/SearchBar";
@@ -16,7 +15,7 @@ function App() {
 		variables: { name: search },
 	});
 
-	// If data exists, data fetched
+	// If data exists, fetch data
 	const contacts = data ? data.searchPhonebook : [];
 
 	return (
