@@ -6,13 +6,15 @@ import { useState } from "react";
 
 import { useQuery } from "@apollo/client";
 import { SEARCH_PHONEBOOK } from "./graphql/queries";
+import useDebounce from "./hooks/useDebounce";
 
 function App() {
 	const [search, setSearch] = useState("");
+	const debouncedSearchTerm = useDebounce(search, 500);
 
-	// Executed Query fetches relevant data
+	// Executed Query fetches relevant data based on debounced search term
 	const { loading, error, data } = useQuery(SEARCH_PHONEBOOK, {
-		variables: { name: search },
+		variables: { name: debouncedSearchTerm },
 	});
 
 	// If data exists, fetch data
