@@ -4,7 +4,7 @@ import App from "./App.jsx";
 import "./styles/index.css";
 import { ApolloProvider } from "@apollo/client";
 import client from "./apollo/client.js";
-import { DarkModeProvider } from "./contexts/DarkModeContext.js";
+import { DarkModeProvider } from "./contexts/DarkModeProvider.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
 	<React.StrictMode>

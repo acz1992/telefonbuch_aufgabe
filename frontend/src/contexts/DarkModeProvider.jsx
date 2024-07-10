@@ -1,10 +1,10 @@
-import React, { createContext, useContext, useMemo, useState } from "react";
+import React, { createContext, useMemo, useState } from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
 // Create context for dark mode
-const DarkModeContext = createContext({ toggleDarkMode: () => {} });
+export const DarkModeContext = createContext({ toggleDarkMode: () => {} });
 
 // Custom hook to use DarkModeContext
 /* export const useDarkMode = () => {
