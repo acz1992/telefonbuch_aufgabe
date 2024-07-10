@@ -4,7 +4,7 @@
 
 Develop a simple graphical user interface for searching a phonebook. It should be possible to search the phonebook by name using a free text field. As the potentially incomplete search term is being entered, the phonebook should be checked for matches without considering case sensitivity, and a list of matches with the full name and phone number should be displayed on the user interface.
 
-Use the attached JSON file as the data source for the phonebook, and develop the frontend preferably using JavaScript, React, and Material UI. Ensure that the user interface is usable on different screen sizes. Whenever possible, choose a client-server architecture where the phonebook data resides server-side and is queried interactively by the client during runtime. At GEOMAGIC, an Apollo Server and GraphQL are typically used for communication.
+Use the attached JSON file as the data source for the phonebook, and develop the frontend preferably using JavaScript, React, and Material UI. Ensure that the user interface is usable on different screen sizes. Whenever possible, choose a client-server architecture where the phonebook data resides server-side and is queried interactively by the client during runtime.
 
 Please provide your solution as a git repository in the form of a zip folder via email and include any necessary instructions for starting or using the application in a README file.
 
