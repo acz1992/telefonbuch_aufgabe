@@ -5,9 +5,9 @@ import { SEARCH_PHONEBOOK } from "../graphql/queries";
 function usePhonebookSearch(searchTerm, page, pageSize) {
 	const { loading, error, data } = useQuery(SEARCH_PHONEBOOK, {
 		variables: {
-			name: searchTerm,
-			pageSize,
-			pageIndex: page - 1,
+			name: searchTerm, // Pass search value to GraphQl query
+			pageSize, // Number of results per page
+			pageIndex: page - 1, // Zero-based page indexing
 		},
 	});
 
