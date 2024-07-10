@@ -1,4 +1,10 @@
-import { Container, Box, Pagination } from "@mui/material";
+import {
+	Container,
+	Box,
+	Pagination,
+	CircularProgress,
+	Typography,
+} from "@mui/material";
 import Title from "./components/Title";
 import SearchBar from "./components/SearchBar";
 import ContactsGrid from "./components/ContactsGrid";
@@ -30,6 +36,9 @@ function App() {
 		setPage(value);
 	};
 
+	const noContactsMessage =
+		!loading && !error && totalContacts === 0 && search !== "";
+
 	return (
 		<Container>
 			<Box>
@@ -44,6 +53,43 @@ function App() {
 					/>
 				</Box>
 
+				{loading && (
+					<Box
+						display="flex"
+						justifyContent="center"
+						alignItems="center"
+						height="20vh"
+					>
+						<CircularProgress />
+					</Box>
+				)}
+
+				{error && (
+					<Box
+						display="flex"
+						justifyContent="center"
+						alignItems="center"
+						height="20vh"
+					>
+						<Typography color="error">
+							Error: {error.message}
+						</Typography>
+					</Box>
+				)}
+
+				{noContactsMessage && (
+					<Box
+						display="flex"
+						justifyContent="center"
+						alignItems="center"
+						height="20vh"
+					>
+						<Typography color="error" variant="h5">
+							No contacts with that name
+						</Typography>
+					</Box>
+				)}
+
 				<ContactsGrid contacts={contacts} />
 				{totalPages > 1 && (
 					<Box my={2} display="flex" justifyContent="center">
@@ -51,7 +97,6 @@ function App() {
 							count={totalPages}
 							page={page}
 							onChange={handlePageChange}
-							color="primary"
 						/>
 					</Box>
 				)}
