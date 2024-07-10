@@ -1,4 +1,10 @@
-import { Container, Box, Pagination, CircularProgress } from "@mui/material";
+import {
+	Container,
+	Box,
+	Pagination,
+	CircularProgress,
+	Typography,
+} from "@mui/material";
 import Title from "./components/Title";
 import SearchBar from "./components/SearchBar";
 import ContactsGrid from "./components/ContactsGrid";
@@ -55,6 +61,14 @@ function App() {
 					</Box>
 				)}
 
+				{error && (
+					<Box display="flex" justifyContent="center" my={2}>
+						<Typography color="error">
+							Error: {error.message}
+						</Typography>
+					</Box>
+				)}
+
 				<ContactsGrid contacts={contacts} />
 				{totalPages > 1 && (
 					<Box my={2} display="flex" justifyContent="center">
@@ -62,7 +76,6 @@ function App() {
 							count={totalPages}
 							page={page}
 							onChange={handlePageChange}
-							color="primary"
 						/>
 					</Box>
 				)}
