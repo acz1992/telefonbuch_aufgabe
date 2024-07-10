@@ -5,8 +5,18 @@ const typeDefs = gql`
 		name: String!
 		phone: String!
 	}
+
+	type PhonebookConnection {
+		totalCount: Int!
+		contacts: [PhonebookEntry!]!
+	}
+
 	type Query {
-		searchPhonebook(name: String!): [PhonebookEntry]
+		searchPhonebook(
+			name: String
+			pageSize: Int!
+			pageIndex: Int!
+		): PhonebookConnection!
 	}
 `;
 
