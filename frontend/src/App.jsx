@@ -36,6 +36,9 @@ function App() {
 		setPage(value);
 	};
 
+	const noContactsMessage =
+		!loading && !error && totalContacts === 0 && search !== "";
+
 	return (
 		<Container>
 			<Box>
@@ -55,16 +58,34 @@ function App() {
 						display="flex"
 						justifyContent="center"
 						alignItems="center"
-						height="40vh"
+						height="20vh"
 					>
 						<CircularProgress />
 					</Box>
 				)}
 
 				{error && (
-					<Box display="flex" justifyContent="center" my={2}>
+					<Box
+						display="flex"
+						justifyContent="center"
+						alignItems="center"
+						height="20vh"
+					>
 						<Typography color="error">
 							Error: {error.message}
+						</Typography>
+					</Box>
+				)}
+
+				{noContactsMessage && (
+					<Box
+						display="flex"
+						justifyContent="center"
+						alignItems="center"
+						height="20vh"
+					>
+						<Typography color="error" variant="h5">
+							No contacts with that name
 						</Typography>
 					</Box>
 				)}
