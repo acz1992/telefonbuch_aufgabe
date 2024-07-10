@@ -27,11 +27,42 @@ export const DarkModeProvider = ({ children }) => {
 	);
 
 	// Mui theme based on current mode
+	/* 	const theme = useMemo(
+		() =>
+			createTheme({
+				palette: {
+					mode,
+				},
+			}),
+		[mode]
+	); */
+
 	const theme = useMemo(
 		() =>
 			createTheme({
 				palette: {
 					mode,
+					...(mode === "dark"
+						? {
+								background: {
+									default: "#121212",
+									paper: "#1D1D1D",
+								},
+								text: {
+									primary: "#E0E0E0",
+									secondary: "#B0B0B0",
+								},
+						  }
+						: {
+								background: {
+									default: "#FFFFFF",
+									paper: "#FFFFFF",
+								},
+								text: {
+									primary: "#000000",
+									secondary: "#333333",
+								},
+						  }),
 				},
 			}),
 		[mode]
@@ -40,6 +71,7 @@ export const DarkModeProvider = ({ children }) => {
 	return (
 		<DarkModeContext.Provider value={darkMode}>
 			<ThemeProvider theme={theme}>
+				{/* Enables dark mode for app's background */}
 				<CssBaseline />
 				{children}
 			</ThemeProvider>
