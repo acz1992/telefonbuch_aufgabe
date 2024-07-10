@@ -1,4 +1,4 @@
-import { Container, Box, Pagination } from "@mui/material";
+import { Container, Box, Pagination, CircularProgress } from "@mui/material";
 import Title from "./components/Title";
 import SearchBar from "./components/SearchBar";
 import ContactsGrid from "./components/ContactsGrid";
@@ -43,6 +43,17 @@ function App() {
 						}}
 					/>
 				</Box>
+
+				{loading && (
+					<Box
+						display="flex"
+						justifyContent="center"
+						alignItems="center"
+						height="40vh"
+					>
+						<CircularProgress />
+					</Box>
+				)}
 
 				<ContactsGrid contacts={contacts} />
 				{totalPages > 1 && (
