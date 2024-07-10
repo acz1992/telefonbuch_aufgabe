@@ -87,6 +87,9 @@ Ensure you have Node.js and npm installed on your machine. This project was buil
 5. **No contacts message** - using conditional rendering:
    Conditionally displays a message when a search query returns no results, informing users that no matching data was found based on their input.
 
+6. **Dark Mode** - default mode based on user's system preference:
+   Enhances usability in varying lighting conditions and reduces eye strain by adapting the interface colors accordingly. Can be changed with Toggle component located underneath title.
+
 ## Learn More
 
 Check the [repository](https://github.com/acz1992/telefonbuch_aufgabe) for the commit history for a step-by-step look at the development process. Closed issues may contain descriptions of completed tasks.
