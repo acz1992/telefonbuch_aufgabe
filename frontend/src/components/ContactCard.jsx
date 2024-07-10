@@ -2,7 +2,16 @@ import { Card, CardContent, Grid, Typography, Avatar } from "@mui/material";
 
 const ContactCard = ({ icon, name, phone }) => {
 	return (
-		<Card variant="outlined" sx={{ margin: 1 }}>
+		<Card
+			variant="outlined"
+			sx={{
+				margin: 1,
+				transition: "transform 0.3s ease-in-out",
+				"&:hover": {
+					transform: "scale(1.05)",
+				},
+			}}
+		>
 			<CardContent>
 				<Grid container alignItems="center" spacing={2}>
 					<Grid item>

@@ -1,14 +1,16 @@
+import { useState } from "react";
 import {
 	Container,
 	Box,
 	Pagination,
 	CircularProgress,
 	Typography,
+	Grid,
 } from "@mui/material";
 import Title from "./components/Title";
 import SearchBar from "./components/SearchBar";
 import ContactsGrid from "./components/ContactsGrid";
-import { useState } from "react";
+import DarkModeToggle from "./components/DarkModeToggle";
 import useDebounce from "./hooks/useDebounce";
 import usePhonebookSearch from "./hooks/usePhonebookSearch";
 
@@ -42,6 +44,9 @@ function App() {
 		<Container>
 			<Box>
 				<Title />
+				<Box display="flex" justifyContent="center">
+					<DarkModeToggle />
+				</Box>
 				<Box display="flex" justifyContent="center">
 					<SearchBar
 						value={search}

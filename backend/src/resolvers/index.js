@@ -1,3 +1,4 @@
+// Directly loads JSON data making it immediately useful
 const phoneData = require("../../data/telefonbuch.json");
 
 const resolvers = {
