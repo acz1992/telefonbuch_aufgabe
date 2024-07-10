@@ -1,4 +1,4 @@
-import { Container, Box } from "@mui/material";
+import { Container, Box, Pagination } from "@mui/material";
 import Title from "./components/Title";
 import SearchBar from "./components/SearchBar";
 import ContactsGrid from "./components/ContactsGrid";
@@ -9,16 +9,26 @@ import { SEARCH_PHONEBOOK } from "./graphql/queries";
 import useDebounce from "./hooks/useDebounce";
 
 function App() {
+	// State for search input and current page
 	const [search, setSearch] = useState("");
 	const debouncedSearchTerm = useDebounce(search, 250);
+	const [page, setPage] = useState(1);
+	const pageSize = 12;
 
-	// Executed Query fetches relevant data based on debounced search term
+	// Executed Query to fetch paginated contacts based on search value
 	const { loading, error, data } = useQuery(SEARCH_PHONEBOOK, {
-		variables: { name: debouncedSearchTerm },
+		variables: { name: debouncedSearchTerm, pageSize, pageIndex: page - 1 },
 	});
 
-	// If data exists, fetch data
-	const contacts = data ? data.searchPhonebook : [];
+	// Calculate total contacts and pages for pagination
+	const totalContacts = data ? data.searchPhonebook.totalCount : 0;
+	const contacts = data ? data.searchPhonebook.contacts : [];
+	const totalPages = Math.ceil(totalContacts / pageSize);
+
+	// Handle page change
+	const handlePageChange = (event, value) => {
+		setPage(value);
+	};
 
 	return (
 		<Container>
@@ -29,11 +39,22 @@ function App() {
 						value={search}
 						onChange={(e) => {
 							setSearch(e.target.value);
+							setPage(1);
 						}}
 					/>
 				</Box>
 
 				<ContactsGrid contacts={contacts} />
+				{totalPages > 1 && (
+					<Box my={2} display="flex" justifyContent="center">
+						<Pagination
+							count={totalPages}
+							page={page}
+							onChange={handlePageChange}
+							color="primary"
+						/>
+					</Box>
+				)}
 			</Box>
 		</Container>
 	);
