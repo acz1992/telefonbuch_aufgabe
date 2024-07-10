@@ -1,7 +1,8 @@
 import React, { createContext, useMemo, useState } from "react";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import getCustomTheme from "../theme/theme";
 
 // Create context for dark mode
 export const DarkModeContext = createContext({ toggleDarkMode: () => {} });
@@ -26,47 +27,8 @@ export const DarkModeProvider = ({ children }) => {
 		[]
 	);
 
-	// Mui theme based on current mode
-	/* 	const theme = useMemo(
-		() =>
-			createTheme({
-				palette: {
-					mode,
-				},
-			}),
-		[mode]
-	); */
-
-	const theme = useMemo(
-		() =>
-			createTheme({
-				palette: {
-					mode,
-					...(mode === "dark"
-						? {
-								background: {
-									default: "#121212",
-									paper: "#1D1D1D",
-								},
-								text: {
-									primary: "#E0E0E0",
-									secondary: "#B0B0B0",
-								},
-						  }
-						: {
-								background: {
-									default: "#FFFFFF",
-									paper: "#FFFFFF",
-								},
-								text: {
-									primary: "#000000",
-									secondary: "#333333",
-								},
-						  }),
-				},
-			}),
-		[mode]
-	);
+	// Remake theme object everytime mode changes
+	const theme = useMemo(() => getCustomTheme(mode), [mode]);
 
 	return (
 		<DarkModeContext.Provider value={darkMode}>
