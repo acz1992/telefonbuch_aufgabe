@@ -9,10 +9,8 @@ import Title from "./components/Title";
 import SearchBar from "./components/SearchBar";
 import ContactsGrid from "./components/ContactsGrid";
 import { useState } from "react";
-
-import { useQuery } from "@apollo/client";
-import { SEARCH_PHONEBOOK } from "./graphql/queries";
 import useDebounce from "./hooks/useDebounce";
+import usePhonebookSearch from "./hooks/usePhonebookSearch";
 
 function App() {
 	// State for search input and current page
@@ -21,10 +19,11 @@ function App() {
 	const [page, setPage] = useState(1);
 	const pageSize = 12;
 
-	// Executed Query to fetch paginated contacts based on search value
-	const { loading, error, data } = useQuery(SEARCH_PHONEBOOK, {
-		variables: { name: debouncedSearchTerm, pageSize, pageIndex: page - 1 },
-	});
+	const { loading, error, data } = usePhonebookSearch(
+		debouncedSearchTerm,
+		page,
+		pageSize
+	);
 
 	// Calculate total contacts and pages for pagination
 	const totalContacts = data ? data.searchPhonebook.totalCount : 0;

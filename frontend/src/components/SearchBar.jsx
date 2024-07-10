@@ -8,6 +8,7 @@ const SearchBar = ({ value, onChange }) => {
 				type="search"
 				label="Search"
 				placeholder="Enter Name Here"
+				autoComplete="off"
 				variant="outlined"
 				InputProps={{
 					startAdornment: (
