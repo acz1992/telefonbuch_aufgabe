@@ -10,6 +10,14 @@ const resolvers = {
 				  )
 				: phoneData;
 
+			// Sort filtered data alphabetically
+			filteredData.sort((a, b) => {
+				const nameA = a.name.toLowerCase();
+				const nameB = b.name.toLowerCase();
+				if (nameA < nameB) return -1;
+				if (nameA > nameB) return 0;
+			});
+
 			// Calculate start and end indices for pagination
 			const start = pageIndex * pageSize;
 			const end = start + pageSize;
