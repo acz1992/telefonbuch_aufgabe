@@ -6,11 +6,6 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 // Create context for dark mode
 export const DarkModeContext = createContext({ toggleDarkMode: () => {} });
 
-// Custom hook to use DarkModeContext
-/* export const useDarkMode = () => {
-	return useContext(DarkContext);
-};
- */
 export const DarkModeProvider = ({ children }) => {
 	// Check users system settings for preference
 	const prefersDarkMode = useMediaQuery("(prefers-dark-scheme: dark)");
