@@ -5,7 +5,8 @@ import {
 	Pagination,
 	CircularProgress,
 	Typography,
-	Grid,
+	Stack,
+	useTheme,
 } from "@mui/material";
 import Title from "./components/Title";
 import SearchBar from "./components/SearchBar";
@@ -40,14 +41,24 @@ function App() {
 	const noContactsMessage =
 		!loading && !error && totalContacts === 0 && search !== "";
 
+	const theme = useTheme();
+
 	return (
 		<Container>
 			<Box>
-				<Title />
-				<Box display="flex" justifyContent="center">
+				<Box display="flex" mt={1} justifyContent="flex-end">
 					<DarkModeToggle />
 				</Box>
-				<Box display="flex" justifyContent="center">
+				<Stack
+					direction="row"
+					justifyContent="space-between"
+					alignItems="center"
+					spacing={2}
+					flexWrap="wrap"
+					my={2}
+				>
+					<Title />
+
 					<SearchBar
 						value={search}
 						onChange={(e) => {
@@ -55,7 +66,7 @@ function App() {
 							setPage(1);
 						}}
 					/>
-				</Box>
+				</Stack>
 
 				{loading && (
 					<Box
@@ -96,7 +107,7 @@ function App() {
 
 				<ContactsGrid contacts={contacts} />
 				{totalPages > 1 && (
-					<Box my={2} display="flex" justifyContent="center">
+					<Box mb={2} display="flex" justifyContent="center">
 						<Pagination
 							count={totalPages}
 							page={page}
