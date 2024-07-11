@@ -1,7 +1,10 @@
 import { TextField, InputAdornment, Box } from "@mui/material";
 import AccountCircle from "@mui/icons-material/AccountCircle";
+import { useTheme } from "@mui/material/styles";
 
 const SearchBar = ({ value, onChange }) => {
+	const theme = useTheme();
+
 	return (
 		<Box width="100%" maxWidth={{ sm: "100%", md: "50%" }} my={2}>
 			<TextField
@@ -20,6 +23,16 @@ const SearchBar = ({ value, onChange }) => {
 				value={value}
 				onChange={onChange}
 				fullWidth
+				sx={{
+					"& .MuiOutlinedInput-root": {
+						"&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+							borderColor:
+								theme.palette.mode === "dark"
+									? "#BB86FC"
+									: "#1976D2",
+						},
+					},
+				}}
 			/>
 		</Box>
 	);

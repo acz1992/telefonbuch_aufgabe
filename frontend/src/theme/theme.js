@@ -2,10 +2,9 @@ import { createTheme } from "@mui/material/styles";
 
 const getCustomTheme = (mode) =>
 	createTheme({
-		// Define palette colours
 		palette: {
 			mode,
-			...(mode === "dark" // Dark mode uses following colours
+			...(mode === "dark"
 				? {
 						background: {
 							default: "#121212",
@@ -17,7 +16,6 @@ const getCustomTheme = (mode) =>
 						},
 				  }
 				: {
-						// Light mode uses following colours
 						background: {
 							default: "#FFFFFF",
 							paper: "#FFFFFF",
@@ -32,20 +30,17 @@ const getCustomTheme = (mode) =>
 			MuiIconButton: {
 				styleOverrides: {
 					root: {
-						// Override default hover effect
 						"&:hover": {
 							backgroundColor: "transparent",
 							"& > *": {
 								fontWeight: "bold",
 							},
 						},
-						// Override default focus effect
 						"&:focus": {
 							backgroundColor: "transparent",
 						},
 					},
 				},
-
 				defaultProps: {
 					disableRipple: true,
 				},
