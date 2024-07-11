@@ -64,7 +64,7 @@ Ensure you have Node.js and npm installed on your machine. This project was buil
 
 ### Instructions
 
-1. Open your web browser and go to http://localhost:3000.
+1. Open your web browser and go to http://localhost:5173/.
 2. Enter a name in the search field to search for contacts in the phonebook.
 3. As you type, the application will display matching contacts dynamically.
 4. View the list of contacts with their full names and phone numbers.
