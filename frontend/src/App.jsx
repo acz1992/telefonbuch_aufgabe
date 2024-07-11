@@ -107,7 +107,7 @@ function App() {
 
 				<ContactsGrid contacts={contacts} />
 				{totalPages > 1 && (
-					<Box display="flex" justifyContent="center">
+					<Box mb={2} display="flex" justifyContent="center">
 						<Pagination
 							count={totalPages}
 							page={page}
