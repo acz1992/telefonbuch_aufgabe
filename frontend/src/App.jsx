@@ -6,6 +6,8 @@ import {
 	CircularProgress,
 	Typography,
 	Grid,
+	useMediaQuery,
+	useTheme,
 } from "@mui/material";
 import Title from "./components/Title";
 import SearchBar from "./components/SearchBar";
@@ -40,22 +42,36 @@ function App() {
 	const noContactsMessage =
 		!loading && !error && totalContacts === 0 && search !== "";
 
+	const theme = useTheme();
+	const isTablet = useMediaQuery(theme.breakpoints.down("md"));
+
 	return (
 		<Container>
 			<Box>
-				<Title />
-				<Box display="flex" justifyContent="center">
+				<Box display="flex" justifyContent="right">
 					<DarkModeToggle />
 				</Box>
-				<Box display="flex" justifyContent="center">
-					<SearchBar
-						value={search}
-						onChange={(e) => {
-							setSearch(e.target.value);
-							setPage(1);
-						}}
-					/>
-				</Box>
+
+				<Grid
+					container
+					direction={isTablet ? "column" : "row"}
+					justifyContent="space-between"
+					alignItems="center"
+				>
+					<Grid item xs={12} md={isTablet ? 12 : 6}>
+						<Title />
+					</Grid>
+					<Grid item xs={12} md={isTablet ? 12 : 6}>
+						<SearchBar
+							value={search}
+							onChange={(e) => {
+								setSearch(e.target.value);
+								setPage(1);
+							}}
+							centered={isTablet}
+						/>
+					</Grid>
+				</Grid>
 
 				{loading && (
 					<Box

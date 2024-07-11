@@ -3,7 +3,7 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 
 const SearchBar = ({ value, onChange }) => {
 	return (
-		<Box mx="auto" width="100%" maxWidth={{ sm: "50%" }} my={2}>
+		<Box width="100%" maxWidth={{ sm: "50%" }} my={2}>
 			<TextField
 				type="search"
 				label="Search"
