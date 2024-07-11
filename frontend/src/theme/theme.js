@@ -28,6 +28,29 @@ const getCustomTheme = (mode) =>
 						},
 				  }),
 		},
+		components: {
+			MuiIconButton: {
+				styleOverrides: {
+					root: {
+						// Override default hover effect
+						"&:hover": {
+							backgroundColor: "transparent",
+							"& > *": {
+								fontWeight: "bold",
+							},
+						},
+						// Override default focus effect
+						"&:focus": {
+							backgroundColor: "transparent",
+						},
+					},
+				},
+
+				defaultProps: {
+					disableRipple: true,
+				},
+			},
+		},
 	});
 
 export default getCustomTheme;
