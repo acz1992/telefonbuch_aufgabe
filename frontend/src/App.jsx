@@ -5,8 +5,7 @@ import {
 	Pagination,
 	CircularProgress,
 	Typography,
-	Grid,
-	useMediaQuery,
+	Stack,
 	useTheme,
 } from "@mui/material";
 import Title from "./components/Title";
@@ -43,35 +42,31 @@ function App() {
 		!loading && !error && totalContacts === 0 && search !== "";
 
 	const theme = useTheme();
-	const isTablet = useMediaQuery(theme.breakpoints.down("md"));
 
 	return (
 		<Container>
 			<Box>
-				<Box display="flex" justifyContent="right">
+				<Box display="flex" mt={1} justifyContent="flex-end">
 					<DarkModeToggle />
 				</Box>
-
-				<Grid
-					container
-					direction={isTablet ? "column" : "row"}
+				<Stack
+					direction="row"
 					justifyContent="space-between"
 					alignItems="center"
+					spacing={2}
+					flexWrap="wrap"
+					my={2}
 				>
-					<Grid item xs={12} md={isTablet ? 12 : 6}>
-						<Title />
-					</Grid>
-					<Grid item xs={12} md={isTablet ? 12 : 6}>
-						<SearchBar
-							value={search}
-							onChange={(e) => {
-								setSearch(e.target.value);
-								setPage(1);
-							}}
-							centered={isTablet}
-						/>
-					</Grid>
-				</Grid>
+					<Title />
+
+					<SearchBar
+						value={search}
+						onChange={(e) => {
+							setSearch(e.target.value);
+							setPage(1);
+						}}
+					/>
+				</Stack>
 
 				{loading && (
 					<Box
@@ -112,7 +107,7 @@ function App() {
 
 				<ContactsGrid contacts={contacts} />
 				{totalPages > 1 && (
-					<Box my={2} display="flex" justifyContent="center">
+					<Box display="flex" justifyContent="center">
 						<Pagination
 							count={totalPages}
 							page={page}

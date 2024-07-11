@@ -16,7 +16,6 @@ const DarkModeToggle = () => {
 			onClick={darkMode.toggleDarkMode} // Toggle between dark and light mode on click
 			color="inherit"
 			sx={{
-				margin: 1,
 				"&:hover": {
 					"& .mode-text": {
 						fontWeight: "bold",
